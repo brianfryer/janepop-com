@@ -1,0 +1,59 @@
+.Textarea__wrapper {
+  // 
+}
+
+.Textarea__maxLength__wrapper {
+  position: relative; // ???
+}
+
+.Textarea {
+  // override default <Textarea>
+  outline: none;
+  background: none;
+
+  display: block;
+  width: 100%;
+  margin-block-end: 3px;
+
+  line-height: theme('lineHeight.none');
+
+  &:focus {
+    // intentionally blank
+  }
+
+  &.error {
+    // intentionally blank
+  }
+
+  &.touched {
+    // intentionally blank
+  }
+
+  &:focus,
+  &.maxLength {
+    padding-bottom: calc(theme('fontSize.xs') * 4);
+  }
+}
+
+.Textarea__maxLength {
+  $this: &;
+
+  position: absolute;
+  inset-block-end: theme('spacing.1');
+  inset-inline-start: theme('spacing.3');
+
+  font-size: theme('fontSize.xs');
+  line-height: theme('lineHeight.none');
+
+  opacity: theme('opacity.0');
+
+  @at-root .Textarea {
+
+    &:focus ~ #{$this},
+    &.touched ~ #{$this} {
+      opacity: theme('opacity.100');
+    }
+  }
+
+  pointer-events: none;
+}

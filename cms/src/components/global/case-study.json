@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_global_case_studies",
+  "info": {
+    "displayName": "Case Study"
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "blurb": {
+      "type": "richtext"
+    },
+    "concepts": {
+      "type": "text"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.link"
+    },
+    "testimonialBlurb": {
+      "type": "richtext"
+    },
+    "testimonialAuthor": {
+      "type": "string"
+    },
+    "testimonialImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "images": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

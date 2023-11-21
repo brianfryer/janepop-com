@@ -1,0 +1,13 @@
+[
+  "app",
+  "components",
+  "config",
+  "constants",
+  "context",
+  "hooks",
+  "lib",
+  "pages",
+  "public",
+  "styles",
+  "utils"
+]

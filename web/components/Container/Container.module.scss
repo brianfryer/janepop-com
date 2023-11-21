@@ -1,0 +1,25 @@
+.Container {
+  width: 100%;
+
+  @screen sm> {
+    margin-inline: auto;
+  }
+
+  @screen sm {
+    max-width: theme('screens.sm.min');
+  }
+
+  @screen md {
+    max-width: theme('screens.md.min');
+  }
+
+  @screen lg {
+    max-width: theme('screens.lg.min');
+  }
+
+  @screen xl {
+    max-width: theme('screens.xl.min');
+  }
+
+  padding-inline: theme('spacing.6');
+}

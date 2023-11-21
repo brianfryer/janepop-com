@@ -1,0 +1,30 @@
+.Header__root {
+  position: relative;
+  padding: theme('spacing.6');
+  // background-color: theme('colors.white');
+}
+
+.Header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: theme('spacing.6');
+}
+
+.Header__logo {
+
+  @screen xs {
+    height: theme('spacing.20');
+  }
+
+  @screen sm> {
+    height: theme('spacing.24');
+  }
+}
+
+.Header__links {
+  
+  @screen md> {
+    flex: 1 1 auto;
+  }
+}

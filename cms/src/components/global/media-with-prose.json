@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_global_media_with_proses",
+  "info": {
+    "displayName": "MediaWithProse",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "componentId": {
+      "type": "string",
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "unique": false
+    },
+    "prose": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.prose"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "global.link"
+    }
+  }
+}

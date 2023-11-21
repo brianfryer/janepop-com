@@ -1,0 +1,31 @@
+.Hero__root {
+  // 
+}
+
+.Hero__container {
+  display: flex;
+  align-items: flex-start;
+  gap: theme('spacing.24');
+}
+
+.Hero,
+.Hero__children {
+  flex: 1 1 auto;
+  width: 50%;
+}
+
+.Hero {
+  // 
+}
+
+.Hero__prose {
+  // 
+}
+
+.Hero__links {
+  margin-block-start: theme('spacing.6');
+}
+
+.Hero__link {
+  // 
+}

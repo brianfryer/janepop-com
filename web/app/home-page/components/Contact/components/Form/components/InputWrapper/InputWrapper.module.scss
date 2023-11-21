@@ -1,0 +1,101 @@
+@use 'sass:map';
+
+$layers: (
+  'label': 2,
+  'children': 1,
+);
+
+.InputWrapper__wrapper {
+  position: relative; // for positioning .Input__iconValid
+
+  width: 100%;
+
+  font-size: theme('fontSize.lg');
+
+  &.isSmall {
+    font-size: theme('fontSize.base');
+  }
+
+  border-radius: theme('borderRadius.lg');
+
+  &:focus-within {
+    outline: theme('spacing[0.5]') solid var(--input-outline-color, transparent);
+    outline-offset: theme('spacing[-px]');
+  }
+}
+
+.InputWrapper__errorMessage {
+  // intentionally blank
+}
+
+.InputWrapper {
+  $this: &;
+
+  position: relative; // for positioning .Input__label
+
+  overflow: clip;
+  border-radius: theme('borderRadius.lg');
+  border: theme('spacing.px') solid var(--input-border-color, transparent);
+  // background-color: var(--input-background-color, theme('colors.white'));
+
+  display: flex;
+  align-items: stretch;
+}
+
+.InputWrapper__label {
+  $this: &;
+
+  cursor: text;
+  user-select: none;
+
+  position: absolute; // relative to .Input__wrapper
+  z-index: map.get($layers, 'label');
+  inset-block-start: 50%;
+  inset-inline-start: theme('spacing.5');
+  transform: translate3d(0, -50%, 0);
+
+  line-height: theme('lineHeight.none');
+
+  // transition:
+  //   all
+  //   theme('transitionDuration.100')
+  //   theme('transitionTimingFunction.in-out');
+
+  &.touched,
+  &.isFocused {
+    inset-block-start: theme('spacing[2.5]');
+    inset-inline-start: theme('spacing.3');
+    font-size: theme('fontSize.xs');
+    transform: translate3d(0, 0, 0);
+  }
+
+  @at-root .isLabelHidden & {
+    @apply sr-only;
+  }
+}
+
+.InputWrapper__children {
+  flex: 1 1 auto;
+
+  position: relative;
+  z-index: map.get($layers, 'children');
+}
+  
+.InputWrapper__input {
+  padding:
+    calc(theme('spacing[3.5]') + theme('fontSize.lg'))
+    theme('spacing.3')
+    theme('spacing[2.5]')
+    theme('spacing.3');
+
+  // @at-root .isLabelHidden & {
+  //   padding:
+  //     calc((theme('fontSize.lg') / 2) + theme('spacing.3'))
+  //     theme('spacing.3');
+  // }
+}
+
+.InputWrapper__helperText {
+  flex: 0 0 auto;
+  width: 100%;
+}

@@ -1,0 +1,120 @@
+@use 'sass:map';
+
+$layers: (
+  'closeButton': 4,
+  'button': 3,
+  'blurb': 2,
+  'fauxBg': 1,
+);
+
+.AnnouncementBar__root {
+  position: relative;
+  z-index: 0;
+  overflow: clip;
+}
+
+.AnnouncementBar__wrapper {
+  position: relative;
+}
+
+.AnnouncementBar {
+
+  @screen xs {
+    padding-block: theme('spacing.4');
+  }
+
+  @screen sm> {
+    padding-block: theme('spacing.3');
+  }
+
+  padding-inline: theme('spacing.6');
+
+  // color: theme('colors.black');
+}
+
+.AnnouncementBar__fauxBg {
+  position: absolute;
+  z-index: map.get($layers, 'fauxBg');
+  inset: 0;
+
+  // background-color: theme('colors.y.base');
+
+  pointer-events: none;
+}
+
+.AnnouncementBar__closeButton {
+  z-index: map.get($layers, 'closeButton');
+
+  @screen xs {
+    position: relative;
+    float: inline-end;
+    margin-block-start: theme('spacing[-0.5]');
+    margin-inline-start: theme('spacing.3');
+    margin-inline-end: theme('spacing[-1.5]');
+  }
+
+  @screen sm> {
+    position: absolute !important;
+    inset-block-start: theme('spacing.3');
+    inset-inline-end: theme('spacing.4');
+    transform: translate3d(theme('spacing[-0.5]'), 0, 0);
+  }
+}
+
+.AnnouncementBar__blurb {
+  position: relative;
+  z-index: map.get($layers, 'blurb');
+
+  @screen sm> {
+    min-height: theme('spacing.9');
+    text-align: center;
+
+    &:not(.isButtonReallyVisible) {
+      padding-inline-end: calc(theme('spacing.6') + theme('spacing.4'));
+    }
+
+    &.isButtonReallyVisible {
+      text-align: start;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.AnnouncementBar__button__wrapper {
+
+  @screen xs {
+    margin-block: theme('spacing.3') theme('spacing.1');
+  }
+
+  @screen sm> {
+    flex: 0 0 auto;
+    margin-inline-start: theme('spacing.6');
+    padding-inline-end: calc(theme('spacing.6') + theme('spacing.4'));
+  }
+}
+
+.AnnouncementBar__button {
+  // --button-color: theme('colors.black');
+  // --button-border-color: theme('colors.black');
+  // --button-background-color: theme('colors.y.base');
+  // --button-outline-color: theme('colors.black');
+
+  &:hover {
+    // --button-color: theme('colors.white');
+    // --button-background-color: theme('colors.black');
+  }
+
+  @screen xs {
+    width: 100%;
+  }
+
+  position: relative;
+  z-index: map.get($layers, 'button');
+
+  @screen sm> {
+    margin-block: theme('spacing[-px]');
+  }
+}

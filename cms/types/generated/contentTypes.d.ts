@@ -677,6 +677,220 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    blurb: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::footer.footer',
+      'oneToMany',
+      'api::footer.footer'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiGlobalAnnouncementBarGlobalAnnouncementBar
+  extends Schema.SingleType {
+  collectionName: 'global_announcement_bars';
+  info: {
+    singularName: 'global-announcement-bar';
+    pluralName: 'global-announcement-bars';
+    displayName: 'Global Announcement Bar';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    isVisible: Attribute.Boolean;
+    override: Attribute.Boolean;
+    blurb: Attribute.RichText;
+    isButtonVisible: Attribute.Boolean;
+    buttonLabel: Attribute.String;
+    buttonUrl: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::global-announcement-bar.global-announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::global-announcement-bar.global-announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGlobalSeoGlobalSeo extends Schema.SingleType {
+  collectionName: 'global_seos';
+  info: {
+    singularName: 'global-seo';
+    pluralName: 'global-seos';
+    displayName: 'Global SEO';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    seo: Attribute.Component<'global.seo'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::global-seo.global-seo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::global-seo.global-seo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHeaderHeader extends Schema.SingleType {
+  collectionName: 'headers';
+  info: {
+    singularName: 'header';
+    pluralName: 'headers';
+    displayName: 'Header';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    links: Attribute.Component<'global.link', true>;
+    emailAddress: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::header.header',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'Home Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    seo: Attribute.Component<'global.seo'>;
+    hero: Attribute.Component<'global.media-with-prose'>;
+    welcome: Attribute.Component<'global.media-with-prose'>;
+    about: Attribute.Component<'global.media-with-prose'>;
+    why: Attribute.Component<'global.media-with-prose'>;
+    how: Attribute.Component<'global.media-with-prose'>;
+    contact: Attribute.Component<'global.media-with-prose'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSupplementalPageSupplementalPage
+  extends Schema.CollectionType {
+  collectionName: 'supplemental_pages';
+  info: {
+    singularName: 'supplemental-page';
+    pluralName: 'supplemental-pages';
+    displayName: 'Supplemental Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    source: Attribute.String;
+    lastMod: Attribute.Date;
+    seo: Attribute.Component<'global.seo'>;
+    components: Attribute.DynamicZone<
+      ['global.prose', 'global.accordion', 'global.embed-code']
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supplemental-page.supplemental-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supplemental-page.supplemental-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -693,6 +907,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::footer.footer': ApiFooterFooter;
+      'api::global-announcement-bar.global-announcement-bar': ApiGlobalAnnouncementBarGlobalAnnouncementBar;
+      'api::global-seo.global-seo': ApiGlobalSeoGlobalSeo;
+      'api::header.header': ApiHeaderHeader;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::supplemental-page.supplemental-page': ApiSupplementalPageSupplementalPage;
     }
   }
 }

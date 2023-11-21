@@ -1,0 +1,37 @@
+@use 'sass:map';
+
+$layers: (
+  'foreground': 2,
+  'background': 1,
+);
+
+.Spinner__wrapper {
+  width: 1em;
+  height: 1em;
+
+  display: inline-grid;
+}
+
+.Spinner {
+  grid-area: 1 / 1 / 2 / 2;
+
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+
+  position: relative;
+}
+
+.background {
+  z-index: map.get($layers, 'background');
+  color: var(--spinner-background-color, currentColor);
+  opacity: var(--spinner-background-opacity, theme('opacity.20'));
+}
+
+.foreground {
+  z-index: map.get($layers, 'foreground');
+  color: var(--spinner-foreground-color, currentColor);
+
+  @apply animate-spin;
+  animation-duration: theme('transitionDuration.1000');
+}

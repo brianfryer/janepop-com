@@ -1,0 +1,44 @@
+.Input__wrapper {
+  // intentionally blank
+}
+
+.Input {
+  $this: &;
+
+  background: none;
+
+  display: block;
+  width: 100%;
+
+  &.clearValue {
+    padding-inline-end:
+      calc(
+        theme('spacing.3') +
+        theme('spacing.5') +
+        theme('spacing.3')
+      );
+  }
+
+  // color: var(--input-color, theme('colors.black'));
+  font-family: theme('fontFamily.sans');
+  font-size: inherit;
+  letter-spacing: theme('letterSpacing.wide');
+  line-height: theme('lineHeight.none');
+
+  &:focus {
+    outline: none;
+  }
+
+  &.isTouched {
+    // intentionally blank
+  }
+
+  &.isError {
+    outline-color: var(--input-error-outline-color, currentColor);
+  }
+
+  &[autocompleted] {
+    // color: var(--global-background-color) !important;
+    // background: var(--global-color) !important;
+  }
+}

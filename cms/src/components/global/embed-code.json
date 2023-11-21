@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_global_embed_codes",
+  "info": {
+    "displayName": "Embed Code"
+  },
+  "options": {},
+  "attributes": {
+    "embedCode": {
+      "type": "text"
+    }
+  }
+}

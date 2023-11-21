@@ -1,0 +1,147 @@
+@use 'sass:math';
+@use 'sass:map';
+
+$layers: (
+  'icon': 4,
+  'label': 3,
+  'fauxBg': 2,
+  'fauxBorder': 1,
+);
+
+.Button__wrapper,
+.Button {
+  display: inline-block;
+  line-height: theme('lineHeight.none');
+  text-align: center;
+}
+
+.Button__wrapper {
+  position: relative;
+
+  &:focus-within {
+    outline: theme('spacing[0.5]') solid var(--button-outline-color);
+    outline-offset: theme('spacing[0.5]');
+  }
+}
+
+.Button__wrapper,
+.Button__fauxBg,
+.Button__fauxBorder {
+  border-radius: theme('borderRadius.full');
+}
+
+.Button__fauxBg,
+.Button__fauxBorder {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  transition: background-color theme('transitionDuration.100') theme('transitionTimingFunction.in-out');
+}
+
+.Button__fauxBg {
+  z-index: map.get($layers, 'fauxBg');
+  background-color: var(--button-background-color, theme('colors.black'));
+  
+  $this: &;
+  @at-root {
+
+    .isOutline > #{$this} {
+      inset: theme('spacing.px');
+    }
+
+    .disabled > #{$this} {
+      background-color: var(--button-disabled-background-color, var(--button-background-color));
+    }
+  }
+}
+
+.Button__fauxBorder {
+  z-index: map.get($layers, 'fauxBorder');
+  background-color: var(--button-border-color);
+  
+  $this: &;
+  @at-root {
+
+    @at-root .disabled > #{$this} {
+      background-color: var(--button-disabled-border-color, var(--button-border-color));
+    }
+  }
+}
+
+.Button {
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  user-select: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &[disabled],
+  &[data-disabled] {
+    cursor: not-allowed;
+  }
+
+  padding: theme('spacing[1.5]') theme('spacing[3.5]');
+
+  font-size: theme('fontSize.lg');
+  font-family: theme('fontFamily.heading');
+  font-weight: theme('fontWeight.bold');
+  text-transform: uppercase;
+
+  transition: color theme('transitionDuration.100') theme('transitionTimingFunction.in-out');
+  color: var(--button-color, theme('colors.white'));
+
+  $this: &;
+  @at-root {
+
+    .isExtraLarge > #{$this} {
+      padding: theme('spacing.4') theme('spacing.6');
+      font-size: theme('fontSize.3xl');
+    }
+
+    .isLarge > #{$this} {
+      padding: theme('spacing.3') theme('spacing.5');
+      font-size: theme('fontSize.2xl');
+    }
+
+    .disabled > #{$this} {
+      color: var(--button-disabled-color, var(--button-color));
+    }
+  }
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: theme('spacing[1.5]');
+}
+
+.Button__label,
+.Button__icon {
+  position: relative;
+}
+
+.Button__label {
+  z-index: map.get($layers, 'label');
+  text-shadow: none !important;
+  transform: translate3d(0, (math.div(5, 8) * -0.1em), 0);
+}
+
+.Button__icon {
+  flex: 0 0 auto;
+  z-index: map.get($layers, 'icon');
+
+  &:first-child {
+    margin-inline-start: -0.2em;
+  }
+
+  &:last-child {
+    margin-inline-end: -0.2em;
+  }
+
+  &:only-child {
+    margin-inline-start: none;
+    margin-inline-end: none;
+  }
+}

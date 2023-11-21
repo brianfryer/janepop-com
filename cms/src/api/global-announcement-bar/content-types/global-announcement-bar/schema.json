@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "global_announcement_bars",
+  "info": {
+    "singularName": "global-announcement-bar",
+    "pluralName": "global-announcement-bars",
+    "displayName": "Global Announcement Bar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isVisible": {
+      "type": "boolean"
+    },
+    "override": {
+      "type": "boolean"
+    },
+    "blurb": {
+      "type": "richtext"
+    },
+    "isButtonVisible": {
+      "type": "boolean"
+    },
+    "buttonLabel": {
+      "type": "string"
+    },
+    "buttonUrl": {
+      "type": "string"
+    }
+  }
+}

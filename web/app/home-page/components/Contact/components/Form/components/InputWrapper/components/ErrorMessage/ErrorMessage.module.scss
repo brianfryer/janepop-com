@@ -1,0 +1,45 @@
+@use 'sass:map';
+
+$layers: (
+  'message': 2,
+  'fauxBg': 1,
+);
+
+.ErrorMessage {
+  margin-right: auto;
+
+  font-size: theme('fontSize.lg');
+  font-weight: theme('fontWeight.bold');
+  line-height: theme('lineHeight.none');
+  text-transform: uppercase;
+
+  color: var(--global-background-color);
+}
+
+.ErrorMessage__message__wrapper {
+  position: relative;
+}
+
+.ErrorMessage__message {
+  position: relative;
+  z-index: map.get($layers, 'message');
+
+  padding: theme('spacing[1.5]');
+}
+
+.ErrorMessage__fauxBg {
+  position: absolute;
+  z-index: map.get($layers, 'fauxBg');
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  fill: none;
+  stroke: var(--global-background-color);
+  stroke-width: 2;
+}
+
+.ErrorMessage__fauxBg__fill {
+  opacity: theme('opacity.20');
+}

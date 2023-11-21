@@ -1,0 +1,71 @@
+@use 'sass:map';
+
+$layers: (
+  'scrollDown': 3,
+  'marquee': 2,
+  'hero': 1,
+);
+
+.HomePage {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  
+  @screen <sm {
+    gap: theme('spacing.24');
+  }
+
+  @screen md> {
+    gap: theme('spacing.36');
+  }
+}
+
+.HomePage__hero {
+  position: relative;
+  z-index: map.get($layers, 'hero');
+}
+
+.HomePage__scrollDown {
+  z-index: map.get($layers, 'scrollDown');
+
+  @screen xs {
+    display: none;
+  }
+  
+  @screen sm {
+    margin-block: theme('spacing[-12]') theme('spacing[-24]');
+  }
+  
+  @screen md> {
+    margin-block: theme('spacing[-24]');
+  }
+}
+
+.HomePage__marquee {
+  position: relative;
+  z-index: map.get($layers, 'marquee');
+
+  @screen xs {
+    margin-block: theme('spacing[-12]');
+  }
+
+  @screen sm> {
+    margin-block: theme('spacing[-8]') theme('spacing[-16]');
+  }
+}
+
+.HomePage__cta {
+
+  @screen <sm {
+    margin-block-start: theme('spacing[-24]');
+    padding-block: theme('spacing.24');
+  }
+
+  @screen md> {
+    margin-block-start: theme('spacing[-36]');
+    padding-block: theme('spacing.36');
+  }
+}

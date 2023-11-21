@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supplemental_pages",
+  "info": {
+    "singularName": "supplemental-page",
+    "pluralName": "supplemental-pages",
+    "displayName": "Supplemental Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "required": true,
+      "unique": true
+    },
+    "source": {
+      "type": "string"
+    },
+    "lastMod": {
+      "type": "date"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.seo"
+    },
+    "components": {
+      "type": "dynamiczone",
+      "components": [
+        "global.prose",
+        "global.accordion",
+        "global.embed-code"
+      ]
+    }
+  }
+}

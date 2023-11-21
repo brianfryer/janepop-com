@@ -1,0 +1,77 @@
+.Tooltip__content {
+  max-width: theme('spacing.96');
+
+  padding: theme('spacing.2') theme('spacing.3');
+
+  text-align: center;
+
+  color: theme('colors.white');
+  background-color: theme('colors.black');
+
+  &[data-state="instant-open"][data-side="top"] {
+    animation-name: slideDownAndFade;
+  }
+
+  &[data-state="instant-open"][data-side="right"] {
+    animation-name: slideLeftAndFade;
+  }
+
+  &[data-state="instant-open"][data-side="bottom"] {
+    animation-name: slideUpAndFade;
+  }
+
+  &[data-state="instant-open"][data-side="left"] {
+    animation-name: slideRightAndFade;
+  }
+
+  animation-duration: theme('transitionDuration.200');
+  animation-timing-function: theme('transitionTimingFunction.in-out');
+
+  @keyframes slideUpAndFade {
+    from {
+      opacity: 0;
+      transform: translateY(theme('spacing.1'));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideRightAndFade {
+    from {
+      opacity: 0;
+      transform: translateX(theme('spacing[-1]'));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideDownAndFade {
+    from {
+      opacity: 0;
+      transform: translateY(theme('spacing[-1]'));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideLeftAndFade {
+    from {
+      opacity: 0;
+      transform: translateX(theme('spacing.1'));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.Tooltip__arrow {
+  fill: theme('colors.black');
+}

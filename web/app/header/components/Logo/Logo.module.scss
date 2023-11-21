@@ -1,0 +1,16 @@
+.Logo__wrapper {
+
+  &:focus-visible {
+    outline: theme('spacing.px') solid theme('colors.white');
+  }
+}
+
+.Logo {
+  fill: currentColor;
+
+  object-fit: contain;
+  object-position: center left;
+  display: block;
+  width: 100%;
+  height: 100%;
+}

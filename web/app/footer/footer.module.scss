@@ -1,0 +1,23 @@
+.Footer {
+  position: relative;
+
+  @screen <sm {
+    padding-block: theme('spacing.6');
+  }
+
+  @screen md> {
+    padding-block: theme('spacing.12');
+  }
+
+  // color: theme('colors.white');
+  // background-color: theme('colors.black');
+}
+
+.Footer__container {
+  // intentionally blank
+}
+
+.Footer__blurb {
+  margin-inline: auto;
+  text-align: center;
+}

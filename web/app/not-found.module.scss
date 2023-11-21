@@ -1,0 +1,17 @@
+.NotFound {
+  flex: 1 1 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NotFound__prose {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.NotFound__button {
+  // --button-color: theme('colors.white');
+  // --button-background-color: theme('colors.m.base');
+}

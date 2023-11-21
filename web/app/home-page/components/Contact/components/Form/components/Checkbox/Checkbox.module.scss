@@ -1,0 +1,51 @@
+.Checkbox {
+
+  & + & {
+    margin-block-start: theme('spacing.3');
+  }
+
+  display: flex;
+  align-items: flex-start;
+  gap: theme('spacing.4');
+}
+
+.Checkbox__root {
+  display: block;
+  width: theme('spacing.7');
+  height: theme('spacing.7');
+
+  border-radius: theme('borderRadius.DEFAULT');
+  // border: theme('spacing.px') solid theme('colors.k.200');
+  
+  &[data-state="checked"] {
+    // color: theme('colors.black');
+    // border-color: theme('colors.y.base');
+    // background-color: theme('colors.y.base');
+  }
+
+  &:focus-visible {
+    // outline: theme('spacing[0.5]') solid theme('colors.y.base');
+    outline-offset: theme('spacing[-px]');
+  }
+}
+
+.Checkbox__indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Checkbox__icon {
+  // 
+}
+
+.Checkbox__label {
+  cursor: pointer;
+  user-select: none;
+
+  // color: theme('colors.k.200');
+  
+  @at-root .Checkbox__root[data-state="checked"] ~ & {
+    // color: theme('colors.white');
+  }
+}

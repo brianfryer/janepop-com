@@ -1,0 +1,51 @@
+@use 'sass:map';
+
+$layers: (
+  'skipLink': 1,
+  'root': 0,
+);
+
+.Layout__skipLink {
+  position: fixed !important;
+  z-index: map.get($layers, 'skipLink');
+  inset-block-start: theme('spacing.3');
+  inset-inline-start: theme('spacing.3');
+
+  &:not(:focus-within) {
+    @apply sr-only;
+  }
+}
+
+.Layout__root {
+  position: relative;
+  z-index: map.get($layers, 'root');
+  width: 100%;
+}
+
+.Layout__wrapper {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.Layout {
+  flex: 1 1 auto;
+  height: 100%;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.Layout__main {
+  flex: 1 1 auto;
+  height: 100%;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}

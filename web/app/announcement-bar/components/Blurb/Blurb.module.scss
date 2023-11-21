@@ -1,0 +1,26 @@
+.Blurb__wrapper {
+
+  @screen sm> {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.Blurb {
+
+  &:global(.prose) {
+    max-width: unset; // override
+  }
+
+  @screen xs {
+
+    br {
+      display: none;
+    }
+  }
+
+  @screen sm> {
+    text-wrap: balance;
+  }
+}

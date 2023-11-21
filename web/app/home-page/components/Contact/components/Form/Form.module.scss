@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+.Form__root {
+  // 
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: theme('spacing.6');
+}
+
+.Form__prose {
+  margin-inline: auto;
+}
+
+.Form__input {
+  // --input-color: theme('colors.white');
+  // --input-border-color: theme('colors.k.200');
+  // --input-background-color: theme('colors.black');
+  // --input-label-color: theme('colors.white');
+  // --input-outline-color: theme('colors.y.base');
+
+  &:focus-within {
+    // --input-border-color: theme('colors.y.base');
+  }
+}
+
+.Form__submitButton {
+  width: 100%;
+
+  // --button-color: theme('colors.black');
+  // --button-background-color: theme('colors.white');
+  // --button-outline-color: theme('colors.y.base');
+}

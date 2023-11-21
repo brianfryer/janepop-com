@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_global_proses",
+  "info": {
+    "displayName": "Prose",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "blurb": {
+      "type": "richtext"
+    }
+  }
+}
