@@ -71,9 +71,9 @@ const Hero = (props) => {
                 wrapper: React.Fragment,
               }}
             >
-              {prose?.blurb}
+              {prose?.blurb || ''}
             </Markdown>
-            {links.length > 0 && (
+            {links?.length > 0 && (
               <div className={clsx(styles.Hero__links, 'not-prose')}>
                 {links.map((link) => {
                   const { id, label, url } = link;

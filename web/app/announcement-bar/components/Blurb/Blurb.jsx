@@ -1,4 +1,5 @@
 import React, {
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -24,6 +25,21 @@ const Blurb = (props) => {
   const { breakpoint } = useContext(BreakpointsContext);
 
   const ref = useRef(null);
+
+  const renderP = useCallback((pProps) => {
+    const { children: pChildren, className: pClassName, ...rest } = pProps;
+
+    return (
+      <p
+        className={clsx(pClassName, {
+          lead: formattedBlurb.length <= 50,
+        })}
+        {...rest}
+      >
+        {pChildren}
+      </p>
+    );
+  }, [formattedBlurb]);
 
   useEffect(() => {
     const resize = () => balanceText(ref.current);
@@ -54,25 +70,8 @@ const Blurb = (props) => {
         <Markdown
           options={{
             forceBlock: true,
+            overrides: { p: renderP },
             wrapper: React.Fragment,
-            overrides: {
-              p: {
-                component: ({
-                  children: pChildren,
-                  className: pClassName,
-                  ...pProps
-                }) => (
-                  <p
-                    className={clsx(pClassName, {
-                      lead: formattedBlurb.length <= 50,
-                    })}
-                    {...pProps}
-                  >
-                    {pChildren}
-                  </p>
-                ),
-              },
-            },
           }}
         >
           {formattedBlurb}

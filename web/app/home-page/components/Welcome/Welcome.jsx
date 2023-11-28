@@ -19,7 +19,7 @@ const Welcome = (props) => {
         <div className="not-prose">
           {'<SearchForm />'}
         </div>
-        {links.length > 0 && (
+        {links?.length > 0 && (
           <div className={clsx(styles.Welcome__links__wrapper, 'not-prose')}>
             <ul className={styles.Welcome__links}>
               {links.map((link) => {
@@ -52,12 +52,10 @@ const Welcome = (props) => {
         <Prose
           className={styles.Welcome__prose}
           options={{
-            overrides: {
-              h2: { component: renderHeading },
-            },
+            overrides: { h2: renderHeading },
           }}
         >
-          {prose?.blurb}
+          {prose?.blurb || ''}
         </Prose>
       </div>
     </div>

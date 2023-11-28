@@ -22,7 +22,7 @@ const How = (props) => {
         >
           {prose?.blurb}
         </Prose>
-        {links.length > 0 && (
+        {links?.length > 0 && (
           <div className={styles.How__links}>
             {links.map((link) => {
               const { id, label, url } = link;
