@@ -36,13 +36,13 @@ Growing together, every step of the way. Your success drives us.
 
 ## About Us
 
-We’re Maypop Store, and we’re here to boost your dispensary's online sales in a real, tangible way. With practical SEO and a website that reflects your unique style, we ensure you're the go-to spot online in your local area.
+We’re Janepop Shops, and we’re here to boost your dispensary's online sales in a real, tangible way. With practical SEO and a website that reflects your unique style, we ensure you're the go-to spot online in your local area.
 
 We bring the tech smarts, you get an online storefront that your customers love and find easily. It’s that simple.
 
 ---
 
-## Why Choose Maypop Store
+## Why Choose Janepop Shops
 
 1. ### Consistent Branding vs. Generic Widgets
   **Your e-commerce storefront seamlessly matches your brand's aesthetic, ensuring a cohesive and engaging shopping experience that positively impacts sales.** _Generic builders might capture your brand, but using a generic widget for your e-commerce solutions leads to a disjointed experience that can harms sales._
@@ -89,7 +89,7 @@ We bring the tech smarts, you get an online storefront that your customers love 
 
 ---
 
-- info@maypop.store
+- info@janepop.com
 - Privacy
 
-&copy; Maypop Store
+&copy; Janepop Shops

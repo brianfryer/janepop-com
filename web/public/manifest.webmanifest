@@ -1,14 +1,14 @@
 {
-  "name": "Aro Connection",
-  "short_name": "Aro",
-  "description": "Packaging, Marketing, and Advertising for the Cannabis Industry",
+  "name": "Janepop Shop",
+  "short_name": "Janepop",
+  "description": "The Next-Level Online Shop for dispensaries",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "any",
   "start_url": "/?homescreen=1",
-  "background_color": "#000",
-  "theme_color": "#000",
+  "background_color": "#121617",
+  "theme_color": "#121617",
   "icons": [
     {
       "src": "/android-chrome-36x36.png",

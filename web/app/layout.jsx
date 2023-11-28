@@ -50,7 +50,10 @@ const Layout = async (props) => {
           >
             <div className={styles.Layout__wrapper}>
               <div className={styles.Layout}>
-                <Header initialData={headerData} />
+                <Header
+                  className={styles.Layout__header}
+                  initialData={headerData}
+                />
                 <main
                   aria-label="Main Content"
                   className={styles.Layout__main}

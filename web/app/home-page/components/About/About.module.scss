@@ -1,19 +1,46 @@
 .About__root {
-  // 
+  overflow: clip;
 }
 
 .About {
   // 
 }
 
-.About__pros {
-  // 
+.About__prose {
+  margin-inline: auto;
+
+  strong {
+    padding-block: theme('spacing[1.5]');
+    color: theme('colors.sun.50');
+    background-color: theme('colors.sun.base' / 15%);
+    box-decoration-break: clone;
+    box-shadow: 
+      theme('spacing[1]') 0 0 theme('colors.sun.base' / 15%),
+      theme('spacing[-1]') 0 0 theme('colors.sun.base' / 15%);
+  }
 }
 
-.About__links {
-  // 
-}
+.About__flair {
+  position: relative;
+  display: inline-block;
 
-.About__lin {
-  // 
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-start: theme('spacing.6');
+
+    // width: calc(50vw - 32.5ch - theme('spacing.6'));
+    width: 100vw;
+    height: theme('spacing[0.5]');
+    background-color: theme('colors.sun.base' / 20%);
+  }
+
+  &::before {
+    inset-inline-end: calc(100% + 0.8333333em);
+  }
+
+  &::after {
+    inset-inline-start: calc(100% + 0.8333333em);
+  }
 }

@@ -1,0 +1,57 @@
+.Bg {
+  // pointer-events: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+
+    background-image: url('/images/pattern.svg');
+    background-position: bottom center;
+    background-size: theme('screens.xl.min');
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        // theme('colors.storm.base' / 0%),
+        theme('colors.storm.base' / 100%) 40%,
+        theme('colors.storm.base' / 100%) 60%,
+        theme('colors.storm.base' / 0%),
+      );
+  }
+
+  opacity: theme('opacity.30');
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// .Bg__shape {
+//   position: absolute;
+//   inset-block: 0;
+//   inset-block-end: 0;
+//   inset-inline-start: 50%;
+
+//   aspect-ratio: 16 / 9;
+
+//   display: none;
+
+//   clip-path: polygon(50% 100%, 0 0, 100% 0);
+//   background-image:
+//     linear-gradient(
+//       to bottom,
+//       theme('colors.storm.400' / 0%),
+//       theme('colors.storm.400' / 30%) calc(
+//         theme('spacing.6')
+//         + theme('spacing.4')
+//         + theme('spacing[0.5]')
+//         + theme('spacing.6')
+//       ),
+//       theme('colors.storm.400'),
+//     );
+
+//   mix-blend-mode: color-burn;
+//   // mix-blend-mode: multiply;
+// }

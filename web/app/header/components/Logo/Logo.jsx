@@ -1,7 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
-// import PNGlogo from '~/public/images/logo.png';
 import styles from './Logo.module.scss';
 
 const Logo = (props) => {
@@ -9,15 +8,11 @@ const Logo = (props) => {
 
   return (
     <Link
-      className={clsx(styles.Logo__wrapper, className)}
+      className={clsx(styles.Logo, className)}
       href="/"
       title="Home"
     >
-      {/* <img
-        alt=""
-        className={styles.Logo}
-        src={PNGlogo.src}
-      /> */}
+      Janepop Shops
     </Link>
   );
 };

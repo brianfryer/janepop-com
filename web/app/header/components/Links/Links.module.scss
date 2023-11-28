@@ -1,7 +1,26 @@
 .Links {
-  // 
+  display: flex;
+  align-items: center;
+  gap: theme('spacing.6');
 }
 
 .Links__link {
-  // 
+  font-family: theme('fontFamily.heading');
+  // font-weight: theme('fontWeight.medium');
+  // font-family: theme('fontFamily.heading');
+  font-size: theme('fontSize.2xl');
+  // font-weight: theme('fontWeight.medium');
+  // letter-spacing: theme('letterSpacing.tight');
+  line-height: theme('lineHeight.none');
+
+  color: theme('colors.sun.50');
+
+  &:hover {
+    color: theme('colors.white');
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: theme('spacing.px') solid theme('colors.white');
+  }
 }

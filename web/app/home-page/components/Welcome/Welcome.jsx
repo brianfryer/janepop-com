@@ -16,8 +16,11 @@ const Welcome = (props) => {
         <h2 className={styles.Welcome__heading}>
           {children}
         </h2>
+        <div className="not-prose">
+          {'<SearchForm />'}
+        </div>
         {links.length > 0 && (
-          <div className="not-prose">
+          <div className={clsx(styles.Welcome__links__wrapper, 'not-prose')}>
             <ul className={styles.Welcome__links}>
               {links.map((link) => {
                 const { id, label, url } = link;
@@ -36,11 +39,6 @@ const Welcome = (props) => {
             </ul>
           </div>
         )}
-        <hr />
-        <div className="not-prose">
-          {'<SearchForm />'}
-        </div>
-        <hr />
       </>
     );
   }, [links]);
@@ -53,7 +51,6 @@ const Welcome = (props) => {
       <div className={styles.Welcome}>
         <Prose
           className={styles.Welcome__prose}
-          fontSize="lg"
           options={{
             overrides: {
               h2: { component: renderHeading },

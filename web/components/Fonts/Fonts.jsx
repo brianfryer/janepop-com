@@ -1,12 +1,10 @@
 import React from 'react';
-import inter from './utils/inter';
-import montserrat from './utils/montserrat';
-import quicksand from './utils/quicksand';
+// import bricolageGrotesque from './utils/bricolageGrotesque';
+import interTight from './utils/interTight';
 
 const fonts = [
-  { style: inter.style, variable: '--font-ui' },
-  { style: montserrat.style, variable: '--font-body' },
-  { style: quicksand.style, variable: '--font-heading' },
+  // { style: bricolageGrotesque.style, variable: '--font-heading' },
+  { style: interTight.style, variable: '--font-ui' },
 ];
 
 const style = `:root {
@@ -15,7 +13,7 @@ const style = `:root {
 
 const Fonts = () => (
   <>
-    {/* <link rel="stylesheet" href="https://use.typekit.net/rnv0nks.css" /> */}
+    <link rel="stylesheet" href="https://use.typekit.net/rnv0nks.css" />
     <style
       dangerouslySetInnerHTML={{
         __html: style,

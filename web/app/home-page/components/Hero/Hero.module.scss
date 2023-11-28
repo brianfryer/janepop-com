@@ -1,31 +1,223 @@
+@use 'sass:map';
+@use 'sass:math';
+
+$layers: (
+  'wrapper': 2,
+  'fauxBg': 1,
+);
+
 .Hero__root {
-  // 
+  overflow-x: clip;
+  position: relative;
+
+  padding-block-start:
+    calc(
+      theme('spacing.12')
+      + theme('spacing.9')
+      + theme('spacing.12')
+    );
+
+  // background-color: theme('colors.storm.base');
+  background-color: theme('colors.leaf.950');
 }
 
-.Hero__container {
+.Hero__bg {
+  position: absolute;
+  z-index: map.get($layers, 'fauxBg');
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.Hero__wrapper {
+  position: relative;
+  z-index: map.get($layers, 'wrapper');
+
   display: flex;
-  align-items: flex-start;
-  gap: theme('spacing.24');
+  align-items: stretch;
+  justify-content: space-between;
+
+  @screen <md {
+    flex-direction: column;
+  }
+
+  @screen <sm {
+    padding-inline: theme('spacing.6');
+    gap: theme('spacing.6');
+  }
+
+  @screen md {
+    padding-inline: theme('spacing.12');
+    gap: theme('spacing.12');
+  }
+
+  @screen lg> {
+    padding-inline: theme('spacing.24');
+    gap: theme('spacing.24');
+  }
 }
 
 .Hero,
 .Hero__children {
   flex: 1 1 auto;
-  width: 50%;
+  
+  @screen xs {
+    padding-block: theme('spacing.6') theme('spacing.12');
+  }
+
+  @screen sm> {
+    padding-block: theme('spacing.12') theme('spacing.24');
+  }
 }
 
 .Hero {
-  // 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Hero__prose {
-  // 
+  
+  @screen sm> {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  text-wrap: balance;
+
+  animation-name: fadeInUp;
+  animation-duration: theme('transitionDuration.500');
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform:
+        scale(0.8)
+        translate3d(0, theme('spacing.12'), 0);
+    }
+    100% {
+      opacity: 1;
+      transform:
+        scale(1)
+        translate3d(0, 0, 0);
+    }
+  }
+}
+  
+.Hero__heading {
+  font-family: theme('fontFamily.body');
+
+  @screen md {
+    font-size: theme('fontSize.7xl');
+  }
+  
+  @screen lg> {
+    font-size: theme('fontSize.8xl');
+  }
+
+  $this: &;
+
+  > strong {
+    
+    @at-root #{$this} {
+      
+      &, & > strong {
+        font-weight: theme('fontWeight.bold');
+      }
+    }
+
+    color: theme('colors.sun.base' / 0%);
+    -webkit-text-stroke: theme('spacing.px') theme('colors.sun.300');
+    background: linear-gradient(to bottom, theme('colors.sun.300'), theme('colors.sun.500') 75%);
+    background-clip: text;
+    -webkit-background-clip: text;  
+  }
+
+  animation-name: fadeInUp;
+  animation-duration: theme('transitionDuration.500');
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform:
+        scale(0.8)
+        translate3d(0, theme('spacing.24'), 0);
+    }
+    100% {
+      opacity: 1;
+      transform:
+        scale(1)
+        translate3d(0, 0, 0);
+    }
+  }
+}
+
+.Hero__p {
+  padding: theme('spacing.12') theme('spacing.9');
+
+  color: theme('colors.sun.50');
+  font-family: theme('fontFamily.heading');
+
+  background-image:
+    linear-gradient(
+      to bottom,
+      theme('colors.sun.base' / 20%),
+      theme('colors.sun.base' / 10%) 15%,
+      theme('colors.sun.base' / 10%) 85%,
+      theme('colors.sun.base' / 20%),
+    );
+
+  backdrop-filter: blur(theme('spacing.2'));
+
+  $this: &;
+
+  @supports not (mask-image: paint(squircle)) {
+    border-radius: theme('borderRadius.3xl');
+  }
+
+  @supports (mask-image: paint(squircle)) {
+
+    @at-root :global(.squircle) #{$this} {
+      --squircle-radius: 100%;
+      --squircle-smooth: 1;
+      mask-image: paint(squircle);
+    }
+  }
+}
+
+.Hero__em {
+  position: relative;
+  display: inline-block;
+}
+
+.Hero__em__underline {
+  position: absolute;
+  z-index: -1;
+  inset-block-end: theme('spacing[-1.5]');
+  inset-inline: theme('spacing[-1]');
+
+  fill: theme('colors.sun.base');
 }
 
 .Hero__links {
-  margin-block-start: theme('spacing.6');
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
 }
 
 .Hero__link {
-  // 
+  text-decoration: underline;
+}
+
+.Hero__children {
+
+  @screen lg {
+    @apply w-5/12;
+  }
+
+  @screen xl {
+    @apply w-5/12;
+  }
 }

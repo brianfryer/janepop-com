@@ -8,18 +8,21 @@
 
   html {
     scroll-behavior: smooth;
-    // -webkit-tap-highlight-color: theme('colors.y.base' / 50%);
+    -webkit-tap-highlight-color: theme('colors.leaf.base');
   }
 
   body {
-    // color: theme('colors.black');
-    // background-color: theme('colors.white');
+    color: theme('colors.white');
+    background-color: theme('colors.white');
     font-family: theme('fontFamily.body');
+    font-weight: theme('fontWeight.extralight');
+    // background-color: theme('colors.storm.base');
+    background-color: theme('colors.leaf.950');
   }
 
   ::selection {
-    // color: theme('colors.black');
-    // background-color: theme('colors.y.base' / 50%);
+    color: theme('colors.black');
+    background-color: theme('colors.leaf.base');
   }
 
   abbr[title] {

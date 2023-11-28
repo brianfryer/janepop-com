@@ -1,30 +1,36 @@
 .Header__root {
-  position: relative;
-  padding: theme('spacing.6');
-  // background-color: theme('colors.white');
+  padding-block: theme('spacing.12');
+
+  @screen <sm {
+    padding-inline: theme('spacing.6');
+  }
+
+  @screen md> {
+    padding-inline: theme('spacing.12');
+  }
+
+  // background-color: theme('colors.storm.base');
+  // background-image: radial-gradient(circle at bottom, theme('colors.sky.100'), theme('colors.sky.50'));
 }
 
 .Header {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
   gap: theme('spacing.6');
 }
 
 .Header__logo {
 
-  @screen xs {
-    height: theme('spacing.20');
-  }
+  // @screen xs {
+  //   height: theme('spacing.20');
+  // }
 
-  @screen sm> {
-    height: theme('spacing.24');
-  }
+  // @screen sm> {
+  //   height: theme('spacing.24');
+  // }
 }
 
 .Header__links {
-  
-  @screen md> {
-    flex: 1 1 auto;
-  }
+  // 
 }

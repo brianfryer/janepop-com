@@ -8,7 +8,7 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Hero from './components/Hero/Hero';
 import How from './components/How/How';
-import Welcome from './components/Welcome/Welcome';
+// import Welcome from './components/Welcome/Welcome';
 import Why from './components/Why/Why';
 import styles from './home-page.module.scss';
 
@@ -26,7 +26,7 @@ const HomePage = (props) => {
     contact,
     hero,
     how,
-    welcome,
+    // welcome,
     why,
   } = data?.attributes || {};
 
@@ -45,11 +45,11 @@ const HomePage = (props) => {
         data={{ hero }}
         fontSize={fontSize}
       >
-        <Welcome
+        {/* <Welcome
           className={styles.HomePage__welcome}
           data={{ welcome }}
           fontSize={fontSize}
-        />
+        /> */}
       </Hero>
       <About
         className={styles.HomePage__about}

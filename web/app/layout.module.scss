@@ -1,7 +1,9 @@
 @use 'sass:map';
 
 $layers: (
-  'skipLink': 1,
+  'skipLink': 3,
+  'header': 2,
+  'main': 1,
   'root': 0,
 );
 
@@ -40,7 +42,18 @@ $layers: (
   flex-direction: column;
 }
 
+.Layout__header {
+  position: absolute;
+  z-index: map.get($layers, 'header');
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  width: 100%;
+}
+
 .Layout__main {
+  position: relative;
+  z-index: map.get($layers, 'main');
+
   flex: 1 1 auto;
   height: 100%;
 

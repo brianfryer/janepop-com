@@ -1,5 +1,5 @@
 {
-  "heading": ["var(--font-heading)", "sans-serif"],
-  "body": ["var(--font-body)", "sans-serif"],
+  "heading": ["the-seasons", "serif"],
+  "body": ["neulis-sans", "sans-serif"],
   "ui": ["var(--font-ui)", "sans-serif"]
 }

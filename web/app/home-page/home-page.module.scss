@@ -26,6 +26,8 @@ $layers: (
 .HomePage__hero {
   position: relative;
   z-index: map.get($layers, 'hero');
+
+  margin-block-end: theme('spacing[-12]');
 }
 
 .HomePage__scrollDown {

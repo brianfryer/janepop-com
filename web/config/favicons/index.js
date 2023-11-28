@@ -7,7 +7,7 @@ const colors = require('../tailwind.config.js/colors');
 
 const data = requireYml('./config/favicons/data.yml');
 
-const SITE_URL = new URL(`https://${process.env.NEXT_PUBLIC_HOSTNAME || 'https://www.maypop.store'}`);
+const SITE_URL = new URL(`https://${process.env.NEXT_PUBLIC_HOSTNAME || 'https://www.janepop.com'}`);
 
 const config = {
   ...favicons.config.defaults,
@@ -19,8 +19,8 @@ const config = {
   developerURL: 'https://www.plaidshaman.design/',
   // dir: 'auto',
   // lang: 'en-US',
-  background: colors.black,
-  theme_color: colors.black,
+  background: colors.storm.base,
+  theme_color: colors.storm.base,
   appleStatusBarStyle: 'black-translucent', // 'default'
   // display: 'standalone',
   // orientation: 'any',

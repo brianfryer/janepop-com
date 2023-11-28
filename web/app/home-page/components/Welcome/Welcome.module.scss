@@ -1,19 +1,59 @@
-.Hero__root {
+.Welcome__root,
+.Welcome {
+  height: 100%;
+}
+
+.Welcome__root {
   // 
 }
 
-.Hero {
+.Welcome {
+  padding: theme('spacing.12');
+  border-radius: theme('borderRadius.3xl');
+  background-color: theme('colors.white');
+
+  --shadow-color: 214deg 30% 71%;
+  --shadow-elevation-low:
+    0.3px 0.5px 0.5px hsl(var(--shadow-color) / 0.36),
+    0.4px 0.7px 0.8px -1.9px hsl(var(--shadow-color) / 0.28),
+    0.9px 1.7px 1.8px -3.7px hsl(var(--shadow-color) / 0.2);
+  --shadow-elevation-medium:
+    0.3px 0.5px 0.5px hsl(var(--shadow-color) / 0.37),
+    0.6px 1.1px 1.2px -1.2px hsl(var(--shadow-color) / 0.31),
+    1.6px 3.2px 3.4px -2.5px hsl(var(--shadow-color) / 0.25),
+    4.3px 8.5px 8.9px -3.7px hsl(var(--shadow-color) / 0.19);
+  --shadow-elevation-high:
+    0.3px 0.5px 0.5px hsl(var(--shadow-color) / 0.31),
+    0.6px 1.3px 1.3px -0.5px hsl(var(--shadow-color) / 0.29),
+    1.1px 2.3px 2.4px -0.9px hsl(var(--shadow-color) / 0.26),
+    1.9px 3.8px 4px -1.4px hsl(var(--shadow-color) / 0.24),
+    3.2px 6.4px 6.7px -1.9px hsl(var(--shadow-color) / 0.22),
+    5.2px 10.4px 10.9px -2.3px hsl(var(--shadow-color) / 0.19),
+    8.1px 16.3px 17.1px -2.8px hsl(var(--shadow-color) / 0.17),
+    12.2px 24.3px 25.5px -3.3px hsl(var(--shadow-color) / 0.15),
+    17.5px 35px 36.7px -3.7px hsl(var(--shadow-color) / 0.13);
+
+  box-shadow: var(--shadow-elevation-high);
+}
+
+.Welcome__prose {
   // 
 }
 
-.Hero__pros {
+.Welcome__heading {
   // 
 }
 
-.Hero__links {
+.Welcome__links__wrapper {
   // 
 }
 
-.Hero__lin {
-  // 
+.Welcome__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.Welcome__link {
+  display: block;
+  padding: theme('spacing.3') theme('spacing.6');
 }

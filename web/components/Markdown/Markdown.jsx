@@ -19,6 +19,7 @@ const Markdown = (props) => {
       options={{
         namedCodesToUnicode: {
           '#8209': '\u2011',
+          '#9642': '\u25AA',
           copy: '\u00A9',
           hellip: '\u2026',
           larr: '\u2190',

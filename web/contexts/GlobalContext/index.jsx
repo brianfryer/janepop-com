@@ -3,6 +3,7 @@
 import React, { createContext, useCallback, useState } from 'react';
 import usePreloadFonts from './hooks/usePreloadFonts';
 import useSmoothScroll from './hooks/useSmoothScroll';
+import useSquircle from './hooks/useSquircle';
 
 const GlobalContext = createContext();
 
@@ -23,6 +24,8 @@ const GlobalContextProvider = (props) => {
   useSmoothScroll();
 
   usePreloadFonts({ updateState });
+
+  useSquircle();
 
   return (
     <GlobalContext.Provider value={{ ...state, updateState }}>

@@ -26,6 +26,8 @@ const Prose = forwardRef((props, ref) => {
         styles.Prose,
         'prose',
         'prose-headings:font-heading',
+        'prose-headings:tracking-tight',
+        'font-light',
         FONT_SIZES[fontSize],
         className,
       )}

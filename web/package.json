@@ -1,5 +1,5 @@
 {
-  "name": "mapypop-store",
+  "name": "janepop-com",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -50,6 +50,8 @@
     "chance": "^1.1.11",
     "clsx": "^2.0.0",
     "cookies-next": "^4.0.0",
+    "css-houdini-squircle": "^0.3.0",
+    "css-paint-polyfill": "^3.4.0",
     "date-fns": "^2.30.0",
     "embla-carousel-react": "^8.0.0-rc14",
     "eslint": "^8.53.0",
