@@ -20,7 +20,7 @@ const Contact = (props) => {
           fontSize="lg"
         >
           <Markdown>
-            {prose?.blurb}
+            {prose?.blurb || ''}
           </Markdown>
           <hr />
           <div className="not-prose">

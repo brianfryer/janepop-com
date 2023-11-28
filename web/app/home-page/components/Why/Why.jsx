@@ -18,7 +18,7 @@ const Why = (props) => {
           className={styles.Why__prose}
           fontSize="lg"
         >
-          {prose?.blurb}
+          {prose?.blurb || ''}
         </Prose>
       </Container>
     </div>

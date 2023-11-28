@@ -20,7 +20,7 @@ const How = (props) => {
           className={styles.How__prose}
           fontSize="lg"
         >
-          {prose?.blurb}
+          {prose?.blurb || ''}
         </Prose>
         {links?.length > 0 && (
           <div className={styles.How__links}>
