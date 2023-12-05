@@ -2,13 +2,28 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import {
+  motion,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
+import breakpoints from '~/config/breakpoints.json';
 import styles from './Bg.module.scss';
 
 const Bg = (props) => {
   const { className } = props;
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 600], [0, -300]);
+  const opacity = useTransform(
+    scrollY,
+    [0, breakpoints.sm],
+    [1, 0],
+  );
+  const y = useTransform(
+    scrollY,
+    [0, breakpoints.lg],
+    [0, breakpoints.md],
+    { clamp: false },
+  );
 
   // [3.6, 2.4, 1.2, 0.6, 0.3].map((n, i) => (
   //   <span
@@ -25,7 +40,7 @@ const Bg = (props) => {
   return (
     <motion.span
       className={clsx(styles.Bg, className)}
-      style={{ y }}
+      style={{ opacity, y }}
     />
   );
 };

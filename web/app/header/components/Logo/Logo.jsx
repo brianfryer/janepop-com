@@ -12,7 +12,7 @@ const Logo = (props) => {
       href="/"
       title="Home"
     >
-      Janepop Shops
+      Janepop
     </Link>
   );
 };

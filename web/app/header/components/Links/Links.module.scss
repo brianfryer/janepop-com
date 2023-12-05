@@ -2,18 +2,25 @@
   display: flex;
   align-items: center;
   gap: theme('spacing.6');
+
+  @screen <sm {
+    flex-direction: column;
+  }
 }
 
 .Links__link {
-  font-family: theme('fontFamily.heading');
-  // font-weight: theme('fontWeight.medium');
-  // font-family: theme('fontFamily.heading');
-  font-size: theme('fontSize.2xl');
-  // font-weight: theme('fontWeight.medium');
-  // letter-spacing: theme('letterSpacing.tight');
-  line-height: theme('lineHeight.none');
-
   color: theme('colors.sun.50');
+
+  @screen <sm {
+    font-weight: theme('fontWeight.bold');
+  }
+
+  @screen md> {
+    font-family: theme('fontFamily.heading');
+  }
+
+  font-size: theme('fontSize.2xl');
+  line-height: theme('lineHeight.none');
 
   &:hover {
     color: theme('colors.white');

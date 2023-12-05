@@ -1,0 +1,237 @@
+@use 'sass:map';
+@use 'sass:math';
+
+$layers: (
+  'heading': 3,
+  'blurb': 2,
+  'fauxBg': 1,
+);
+
+.Item {
+  --item-us-color: theme('colors.leaf.950');
+  --item-them-color: theme('colors.leaf.200');
+
+  @screen xl {
+    @apply w-9/12;
+    margin-inline: auto;
+  }
+
+  &.isFirst {
+    // intentionally blank
+  }
+
+  &.isLast {
+    // intentionally blank
+  }
+}
+
+.Item__container {
+  position: relative;
+
+  @screen xs {
+    overflow-x: clip;
+  }
+}
+
+.Item__fauxBg {
+
+  @screen <sm {
+    display: none;
+  }
+
+  @screen md> {
+    position: absolute;
+    z-index: map.get($layers, 'fauxBg');
+    inset-block: calc(var(--gap) * math.div(-1.5, 3)) calc(var(--gap) * math.div(-0.5, 3));
+    inset-inline-start: theme('spacing[-6]');
+    width: calc(math.percentage(math.div(7, 12)) + theme('spacing.6'));
+
+    background-color: theme('colors.leaf.300' / math.div(1, 2));
+    backdrop-filter: blur(theme('spacing.1'));
+
+    $this: &;
+
+    @at-root {
+
+      .isFirst,
+      .isLast {
+
+        #{$this} {
+          background-color: unset;
+
+          :global(.squircle) & {
+
+            @supports (mask-image: paint(squircle)) {
+              --squircle-smooth: 1;
+              mask-image: paint(squircle);
+            }
+          }
+        }
+      }
+
+      .isFirst #{$this} {
+        --squircle-radius-top-left: 50px;
+        --squircle-radius-top-right: 50px;
+        --squircle-radius-bottom-right: 0;
+        --squircle-radius-bottom-left: 0;
+
+        @supports not (mask-image: paint(squircle)) {
+          border-top-right-radius: theme('borderRadius.3xl');
+          border-top-left-radius: theme('borderRadius.3xl');
+        }
+
+        background-image:
+          linear-gradient(
+            to bottom,
+            theme('colors.leaf.300' / math.div(3, 4)),
+            theme('colors.leaf.300' / math.div(1, 2)),
+          );
+      }
+
+      .isLast #{$this} {
+        inset-block-end: calc(var(--gap) * math.div(-1.5, 3));
+
+        --squircle-radius-top-left: 0;
+        --squircle-radius-top-right: 0;
+        --squircle-radius-bottom-right: 50px;
+        --squircle-radius-bottom-left: 50px;
+
+        @supports not (mask-image: paint(squircle)) {
+          border-bottom-right-radius: theme('borderRadius.3xl');
+          border-bottom-left-radius: theme('borderRadius.3xl');
+        }
+
+        background-image:
+          linear-gradient(
+            to bottom,
+            theme('colors.leaf.300' / math.div(1, 2)),
+            theme('colors.leaf.300' / math.div(3, 4)),
+          );
+      }
+    }
+  }
+}
+
+.Item__heading,
+.Item__blurb {
+
+  @screen md> {
+    padding-inline-start: theme('spacing.10');
+
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 0;
+      width: theme('spacing.px');
+    }
+  }
+}
+
+.Item__heading {
+  z-index: map.get($layers, 'heading');
+
+  @screen <sm {
+    padding-block-end: calc(var(--gap) / 4);
+  }
+    
+  @screen md> {
+    padding-block-end: calc(var(--gap) / 8);
+
+    &::before {
+      inset-block: 0;
+      background-color: theme('colors.leaf.800');
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset-block-start: 1em;
+      inset-inline-start: theme('spacing.px');
+      transform: translate3d(-50%, 0, 0);
+      width: theme('spacing[3.5]');
+      height: theme('spacing[3.5]');
+      border-radius: theme('spacing.1');
+      border: theme('spacing.px') solid theme('colors.sun.300');
+      background-image: linear-gradient(to bottom, theme('colors.sun.300'), theme('colors.sun.500') 75%);
+      box-shadow: 0 0 0 theme('spacing.px') theme('colors.leaf.800');
+    }
+  }
+}
+
+.Item__blurb {
+  z-index: map.get($layers, 'blurb');
+
+  &::before {
+    inset-block: 0 theme('spacing[-6]');
+    background-image:
+      linear-gradient(
+        to bottom,
+        theme('colors.leaf.800'),
+        theme('colors.leaf.800' / 0%),
+      );
+  }
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  @screen xs {
+    flex-direction: column;
+  }
+
+  @screen <sm {
+    gap: calc(var(--gap) / 4) calc(var(--gap) / 2);
+  }
+
+  @screen md {
+    gap: calc(var(--gap) / 4);
+  }
+
+  @screen lg> {
+    gap: calc(var(--gap) / 2);
+  }
+}
+
+.Item__us__wrapper,
+.Item__them {
+
+  @screen sm {
+    @apply w-6/12;
+  }
+}
+
+.Item__us__wrapper {
+
+  @screen md> {
+    flex: 1 0 auto;
+    width: calc(math.percentage(math.div(7, 12)) - theme('spacing.12'));
+    padding-inline-end: theme('spacing.6');
+  }
+}
+
+.Item__us {
+
+  @screen md> {
+    color: var(--item-us-color);
+    font-weight: theme('fontWeight.bold');
+    text-shadow: theme('spacing.px') theme('spacing.px') 0 theme('colors.leaf.300');
+  }
+}
+
+.Item__them {
+
+  @screen md> {
+    flex: 0 1 auto;
+    color: var(--item-them-color);
+  }
+
+  @screen md {
+    margin-inline-start: calc(var(--gap) / 4 + theme('spacing.12'));
+  }
+
+  @screen lg> {
+    margin-inline-start: calc(var(--gap) / 2 + theme('spacing.12'));
+  }
+}

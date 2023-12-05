@@ -1,18 +1,18 @@
 .Wrapper__trigger {
   position: absolute !important;
-  inset-block-end: 0;
+  inset-block-start: 50%;
   inset-inline-end: theme('spacing.6');
 
   transform: translate3d(0, -50%, 0);
 
-  --button-color: theme('colors.black');
-  --button-border-color: theme('colors.black');
-  --button-background-color: theme('colors.white');
+  --button-color: theme('colors.sun.950');
+  --button-border-color: theme('colors.sun.200');
+  --button-background-color: theme('colors.sun.200');
   
   &.open {
-    --button-color: theme('colors.white');
-    --button-border-color: theme('colors.black');
-    --button-background-color: theme('colors.black');
+    --button-color: theme('colors.sun.50');
+    --button-border-color: theme('colors.sun.950');
+    --button-background-color: theme('colors.sun.950');
   }
 
   animation: fadeIn theme('transitionDuration.200') theme('transitionTimingFunction.in-out');
@@ -31,9 +31,7 @@
   width: 100vw;
 
   padding: theme('spacing.6');
-
-  // border-bottom: theme('spacing.1') solid theme('colors.white');
-  background-color: theme('colors.black');
+  background-color: theme('colors.sun.950');
 
   transform-origin: top right;
   animation: scaleIn theme('transitionDuration.200') theme('transitionTimingFunction.in-out');

@@ -1,0 +1,110 @@
+@use 'sass:math';
+
+.Heading__root {
+  // 
+}
+
+.Heading {
+  font-weight: theme('fontWeight.bold');
+  letter-spacing: theme('letterSpacing.tight');
+  line-height: theme('lineHeight.tight');
+
+  @screen <sm {
+    // color: var(--item-us-color);
+    font-size: theme('fontSize.2xl');
+  }
+
+  @screen md> {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  @screen md {
+    gap: calc(var(--gap) / 4);
+  }
+
+  @screen lg> {
+    gap: calc(var(--gap) / 2);
+  }
+}
+
+.Heading__delimiter__wrapper,
+.Heading__them {
+
+  @screen md> {
+    flex: 0 1 auto;
+    color: var(--item-them-color);
+    font-size: theme('fontSize.2xl');
+  }
+}
+
+.Heading__delimiter__wrapper {
+
+  @screen md> {
+    width: 0;
+    margin-inline-start: theme('spacing[-1.5]');
+
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset-block-start: 50%;
+      inset-inline-start: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: theme('spacing.12');
+      height: theme('spacing.12');
+
+      background-color: var(--item-us-color);
+      opacity: theme('opacity.40');
+
+      $this: &;
+
+      @supports not (mask-image: paint(squircle)) {
+        border-radius: theme('borderRadius.full');
+      }
+    
+      @supports (mask-image: paint(squircle)) {
+    
+        @at-root :global(.squircle) #{$this} {
+          --squircle-radius: 100%;
+          --squircle-smooth: 1;
+          mask-image: paint(squircle);
+        }
+      }
+    }
+  }
+}
+
+.Heading__delimiter {
+  
+  @screen md> {
+    display: inline-block;
+    transform: translate3d(-50%, 0, 0);
+
+    font-family: theme('fontFamily.heading');
+    font-style: italic;
+  }
+}
+
+.Heading__us {
+  
+  @screen md> {
+    flex: 0 1 auto;
+    width: math.percentage(math.div(7, 12));
+    padding-inline-end: theme('spacing.12');
+
+    color: var(--item-us-color);
+    font-size: theme('fontSize.4xl');
+    text-shadow: theme('spacing.px') theme('spacing.px') 0 theme('colors.leaf.300');
+  }
+}
+
+.Heading__them {
+
+  @screen md> {
+    flex: 0 1 auto;
+    margin-inline-start: theme('spacing[1.5]');
+  }
+}

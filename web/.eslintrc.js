@@ -15,6 +15,7 @@ module.exports = {
       'ignore': [ '\.svg' ],
     }],
     'max-len': 'off',
+    'no-console': ['warn', { allow: ['error', 'info', 'warn'] }],
     'no-void': ['error', { 'allowAsStatement': true }],
   },
 };

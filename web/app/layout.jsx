@@ -61,7 +61,7 @@ const Layout = async (props) => {
                 >
                   {children}
                 </main>
-                <Footer data={footerData} />
+                <Footer initialData={footerData} />
               </div>
             </div>
           </div>

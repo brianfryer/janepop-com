@@ -1,11 +1,15 @@
 import baseUrl from '~/utils/baseUrl';
 import formatErrorMessage from '~/utils/formatErrorMessage';
+import { revalidation } from '../route';
 
 const fetchFooter = async () => {
   try {
     const url = new URL('/footer', baseUrl);
     const endpoint = url.toString();
-    const response = await fetch(endpoint);
+    const tag = revalidation.getTag();
+    const response = await fetch(endpoint, {
+      next: { tags: [tag, 'cms'] },
+    });
 
     if (!response || !response.ok) {
       const message = formatErrorMessage(response.statusText, endpoint);

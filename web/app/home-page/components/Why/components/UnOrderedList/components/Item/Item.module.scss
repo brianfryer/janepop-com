@@ -1,0 +1,46 @@
+@use 'sass:math';
+
+.Item,
+.Item__blurb {
+  height: 100%;
+}
+
+.Item {
+  padding: theme('spacing.6');
+
+  color: theme('colors.leaf.950');
+  background-image:
+    linear-gradient(
+      to bottom,
+      theme('colors.leaf.300' / math.div(3, 4)),
+      theme('colors.leaf.300' / math.div(1, 2)),
+    );
+  backdrop-filter: blur(theme('spacing.1'));
+
+  $this: &;
+
+  @supports not (mask-image: paint(squircle)) {
+    border-radius: theme('borderRadius.3xl');
+  }
+
+  @supports (mask-image: paint(squircle)) {
+
+    @at-root :global(.squircle) #{$this} {
+      --squircle-radius: 10px;
+      --squircle-smooth: 1;
+      mask-image: paint(squircle);
+    }
+  }
+}
+
+.Item__blurb {
+  // 
+}
+
+.Item__heading__wrapper {
+  display: block;
+}
+
+.Item__heading {
+  // 
+}

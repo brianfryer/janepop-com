@@ -1,13 +1,14 @@
 'use client';
 
 import React, { useContext, useMemo } from 'react';
+import clsx from 'clsx';
 import { useQuery } from '@tanstack/react-query';
 import BreakpointsContext from '~/contexts/BreakpointsContext';
 import fetchHomePage from './utils/fetchHomePage';
 import About from './components/About/About';
-import Contact from './components/Contact/Contact';
+// import Contact from './components/Contact/Contact';
 import Hero from './components/Hero/Hero';
-import How from './components/How/How';
+// import How from './components/How/How';
 // import Welcome from './components/Welcome/Welcome';
 import Why from './components/Why/Why';
 import styles from './home-page.module.scss';
@@ -23,9 +24,9 @@ const HomePage = (props) => {
 
   const {
     about,
-    contact,
+    // contact,
     hero,
-    how,
+    // how,
     // welcome,
     why,
   } = data?.attributes || {};
@@ -38,39 +39,54 @@ const HomePage = (props) => {
     return '2xl';
   }, [breakpoint]);
 
+  const sections = useMemo(() => [{
+    Component: Hero,
+    className: styles.HomePage__hero,
+    data: { hero },
+    key: 'hero',
+  }, {
+    Component: About,
+    className: styles.HomePage__about,
+    data: { about },
+    key: 'about',
+  }, {
+    Component: Why,
+    className: styles.HomePage__why,
+    data: { why },
+    key: 'why',
+    // }, {
+    //   Component: How,
+    //   className: styles.HomePage__how,
+    //   data: { how },
+    //   key: 'how',
+    // }, {
+    //   Component: Contact,
+    //   className: styles.HomePage__contact,
+    //   data: { contact },
+    //   key: 'contact',
+  }], [
+    about,
+    // contact,
+    hero,
+    // how,
+    why,
+  ]);
+
   return (
     <div className={styles.HomePage}>
-      <Hero
-        className={styles.HomePage__hero}
-        data={{ hero }}
-        fontSize={fontSize}
-      >
-        {/* <Welcome
-          className={styles.HomePage__welcome}
-          data={{ welcome }}
+      {sections.map(({
+        Component,
+        className,
+        data: componentData,
+        key,
+      }) => (
+        <Component
+          className={clsx(styles.HomePage__section, className)}
+          data={componentData}
           fontSize={fontSize}
-        /> */}
-      </Hero>
-      <About
-        className={styles.HomePage__about}
-        data={{ about }}
-        fontSize={fontSize}
-      />
-      <Why
-        className={styles.HomePage__why}
-        data={{ why }}
-        fontSize={fontSize}
-      />
-      <How
-        className={styles.HomePage__how}
-        data={{ how }}
-        fontSize={fontSize}
-      />
-      <Contact
-        className={styles.HomePage__contact}
-        data={{ contact }}
-        fontSize={fontSize}
-      />
+          key={key}
+        />
+      ))}
     </div>
   );
 };

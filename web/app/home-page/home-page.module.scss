@@ -9,17 +9,31 @@ $layers: (
 .HomePage {
   position: relative;
 
+  @screen <sm {
+    --gap: theme('spacing.24');
+  }
+
+  @screen md> {
+    --gap: theme('spacing.36');
+  }
+
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  
-  @screen <sm {
-    gap: theme('spacing.24');
-  }
+  gap: var(--gap);
+}
 
-  @screen md> {
-    gap: theme('spacing.36');
+.HomePage__section {
+
+  &:first-child {
+    // this is equal to the height of .Header
+    padding-block-start:
+      calc(
+        theme('spacing.12')
+        + theme('spacing.9')
+        + theme('spacing.12')
+      );
   }
 }
 
@@ -30,44 +44,24 @@ $layers: (
   margin-block-end: theme('spacing[-12]');
 }
 
-.HomePage__scrollDown {
-  z-index: map.get($layers, 'scrollDown');
-
-  @screen xs {
-    display: none;
-  }
-  
-  @screen sm {
-    margin-block: theme('spacing[-12]') theme('spacing[-24]');
-  }
-  
-  @screen md> {
-    margin-block: theme('spacing[-24]');
-  }
+.HomePage__about {
+  // 
 }
 
-.HomePage__marquee {
-  position: relative;
-  z-index: map.get($layers, 'marquee');
-
-  @screen xs {
-    margin-block: theme('spacing[-12]');
-  }
-
-  @screen sm> {
-    margin-block: theme('spacing[-8]') theme('spacing[-16]');
-  }
+.HomePage__why {
+  // padding-block: var(--gap);
+  // background-color: theme('colors.leaf.base');
 }
 
-.HomePage__cta {
+.HomePage__how {
+  // margin-block-start: calc(var(--gap) * -1);
+  // padding-block: var(--gap);
+  // background-color: theme('colors.rose.base');
+}
 
-  @screen <sm {
-    margin-block-start: theme('spacing[-24]');
-    padding-block: theme('spacing.24');
-  }
-
-  @screen md> {
-    margin-block-start: theme('spacing[-36]');
-    padding-block: theme('spacing.36');
-  }
+.HomePage__contact {
+  // margin-block-start: calc(var(--gap) * -1);
+  // padding-block: var(--gap);
+  // color: theme('colors.sun.950');
+  // background-color: theme('colors.sun.base');
 }

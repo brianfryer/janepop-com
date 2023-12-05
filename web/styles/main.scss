@@ -8,21 +8,20 @@
 
   html {
     scroll-behavior: smooth;
-    -webkit-tap-highlight-color: theme('colors.leaf.base');
+    -webkit-tap-highlight-color: theme('colors.white');
   }
 
   body {
     color: theme('colors.white');
     background-color: theme('colors.white');
     font-family: theme('fontFamily.body');
-    font-weight: theme('fontWeight.extralight');
-    // background-color: theme('colors.storm.base');
+    font-weight: theme('fontWeight.light');
     background-color: theme('colors.leaf.950');
   }
 
   ::selection {
     color: theme('colors.black');
-    background-color: theme('colors.leaf.base');
+    background-color: theme('colors.white');
   }
 
   abbr[title] {

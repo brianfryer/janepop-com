@@ -1,6 +1,7 @@
 import React from 'react';
 import MarkdownToJsx from 'markdown-to-jsx';
 import { isUndefined } from 'lodash';
+import namedCodesToUnicode from './utils/namedCodesToUnicode';
 
 const Markdown = (props) => {
   const {
@@ -17,21 +18,7 @@ const Markdown = (props) => {
     <MarkdownToJsx
       className={className}
       options={{
-        namedCodesToUnicode: {
-          '#8209': '\u2011',
-          '#9642': '\u25AA',
-          copy: '\u00A9',
-          hellip: '\u2026',
-          larr: '\u2190',
-          ldquo: '\u201C',
-          lsquo: '\u2018',
-          mdash: '\u2014',
-          ndash: '\u2013',
-          rarr: '\u2192',
-          rdquo: '\u201D',
-          rsquo: '\u2019',
-          shy: '\u00AD',
-        },
+        namedCodesToUnicode,
         ...o,
         ...(wrapper ? { wrapper } : {}),
       }}

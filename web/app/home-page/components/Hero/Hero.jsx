@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import clsx from 'clsx';
+import compiler from '~/utils/compiler';
 import Link from '~/components/Link/Link';
-import Markdown from '~/components/Markdown/Markdown';
 import Prose from '~/components/Prose/Prose';
 import Bg from './components/Bg/Bg';
 import SVGunderline from './assets/underline.svg';
@@ -17,36 +17,48 @@ const Hero = (props) => {
 
   const { componentId, links, prose } = data?.hero || {};
 
-  const renderH1 = useCallback((h1Props) => {
-    const { children: h1Children } = h1Props;
+  const renderEm = useCallback((em) => React.cloneElement(em, {
+    children: [
+      em.props.children,
+      <SVGunderline
+        className={styles.Hero__em__underline}
+        key="underline"
+      />,
+    ],
+    className: clsx(styles.Hero__em, em.props.className),
+  }), []);
 
-    return (
-      <h1 className={styles.Hero__heading}>
-        {h1Children}
-      </h1>
-    );
-  }, []);
+  const { blurb, heading } = useMemo(() => {
+    const compiledProse = compiler(prose?.blurb);
 
-  const renderEm = useCallback((emProps) => {
-    const { children: emChildren } = emProps;
+    return compiledProse.props.children.reduce((acc, child) => {
+      if (child.type === 'h1') {
+        acc.heading.push(child);
+        return acc;
+      }
 
-    return (
-      <span className={styles.Hero__em}>
-        {emChildren}
-        <SVGunderline className={styles.Hero__em__underline} />
-      </span>
-    );
-  }, []);
+      if (child.type === 'ul') {
+        const ul = <div className="not-prose" key={child.key}>{child}</div>;
+        acc.blurb.push(ul);
+        return acc;
+      }
 
-  const renderP = useCallback((pProps) => {
-    const { children: pChildren } = pProps;
+      const childClone = React.cloneElement(child, {
+        children: child.props.children.map((c, i) => {
+          const isString = typeof c === 'string';
+          const key = isString ? i : c.key;
+          return (
+            <React.Fragment key={key}>
+              {c.type === 'em' ? renderEm(c) : c}
+            </React.Fragment>
+          );
+        }),
+      });
 
-    return (
-      <p className={styles.Hero__p}>
-        {pChildren}
-      </p>
-    );
-  }, []);
+      acc.blurb.push(childClone);
+      return acc;
+    }, { heading: [], blurb: [] });
+  }, [prose, renderEm]);
 
   return (
     <div
@@ -57,40 +69,34 @@ const Hero = (props) => {
       <div className={styles.Hero__wrapper}>
         <div className={styles.Hero}>
           <Prose
-            className={styles.Hero__prose}
+            className={styles.Hero__heading}
             fontSize={fontSize}
           >
-            <Markdown
-              options={{
-                forceBlock: true,
-                overrides: {
-                  em: renderEm,
-                  h1: renderH1,
-                  p: renderP,
-                },
-                wrapper: React.Fragment,
-              }}
-            >
-              {prose?.blurb || ''}
-            </Markdown>
-            {links?.length > 0 && (
-              <div className={clsx(styles.Hero__links, 'not-prose')}>
-                {links.map((link) => {
-                  const { id, label, url } = link;
-
-                  return (
-                    <Link
-                      className={styles.Hero__link}
-                      href={url}
-                      key={id}
-                    >
-                      {label}
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
+            {heading}
           </Prose>
+          <Prose
+            className={styles.Hero__blurb}
+            fontSize={fontSize}
+          >
+            {blurb}
+          </Prose>
+          {links?.length > 0 && (
+            <div className={styles.Hero__links}>
+              {links.map((link) => {
+                const { id, label, url } = link;
+
+                return (
+                  <Link
+                    className={styles.Hero__link}
+                    href={url}
+                    key={id}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
         {children && (
           <div className={styles.Hero__children}>

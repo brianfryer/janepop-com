@@ -1,11 +1,101 @@
-.Why__root {
-  // 
-}
-
 .Why {
   // 
 }
 
-.Why__prose {
-  // 
+.Why__heading {
+
+  @screen <sm {
+    margin-block-end: calc(var(--gap) / 3);
+  }
+
+  @screen md> {
+    margin-block-end: calc(var(--gap) / 2);
+  }
+
+  @screen xl {
+    @apply w-9/12;
+    margin-inline: auto;
+  }
+}
+
+.Why__lists {
+
+  @screen sm> {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+
+      pointer-events: none;
+
+      background-image: url('/images/pattern.svg');
+      background-size: theme('screens.xl.min');
+
+      opacity: theme('opacity.10');
+    }
+  }
+}
+
+.Why__orderedList {
+
+  > li {
+    padding-block: calc(var(--gap) / 3);
+
+    &:nth-child(1) {
+      --why-ordered-list-item-background-color: theme('colors.leaf.900' / 100%);
+      --why-ordered-list-item-background-color-alternate: theme('colors.leaf.900' / 90%);
+    }
+
+    &:nth-child(2) {
+      --why-ordered-list-item-background-color: theme('colors.leaf.800' / 100%);
+      --why-ordered-list-item-background-color-alternate: theme('colors.leaf.800' / 90%);
+    }
+
+    &:nth-child(3) {
+      --why-ordered-list-item-background-color: theme('colors.leaf.700' / 100%);
+      --why-ordered-list-item-background-color-alternate: theme('colors.leaf.700' / 90%);
+    }
+
+    background-image:
+      linear-gradient(
+        to bottom,
+        var(--why-ordered-list-item-background-color-alternate),
+        var(--why-ordered-list-item-background-color) theme('spacing.9'),
+        var(--why-ordered-list-item-background-color) calc(100% - theme('spacing.9')),
+        var(--why-ordered-list-item-background-color-alternate),
+      );
+  }
+}
+
+.Why__subheading {
+  margin-block-end: calc(var(--gap) / 4);
+  color: theme('colors.leaf.950');
+}
+
+.Why__unOrderedList__wrapper {
+
+  @screen <sm {
+    padding-block: calc(var(--gap) / 3);
+  }
+
+  @screen md> {
+    padding-block: var(--gap);
+  }
+
+  background-color: theme('colors.leaf.600');
+}
+
+.Why__unOrderedList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: theme('spacing.3');
+  
+  > li {
+    flex: 1 1 0;
+    min-width: theme('spacing.72');
+  }
 }

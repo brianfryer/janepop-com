@@ -30,6 +30,8 @@ const Links = (props) => {
     // },
   ];
 
+  if (!allLinks.length) return null;
+
   return (
     <Wrapper>
       <ul className={clsx(styles.Links, className)}>
