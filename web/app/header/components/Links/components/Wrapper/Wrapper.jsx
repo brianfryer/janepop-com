@@ -15,6 +15,8 @@ const Wrapper = (props) => {
 
   const { breakpoint } = useContext(BreakpointsContext);
 
+  if (!breakpoint) return null;
+
   if (breakpoint !== 'xs' && breakpoint !== 'sm') return children;
 
   return (
@@ -26,7 +28,7 @@ const Wrapper = (props) => {
             [styles.open]: open,
           })}
           iconEnd={open ? faXmark : faBars}
-          isLarge
+          // isLarge
           isOutline
         >
           {open ? 'Close' : 'Menu'}

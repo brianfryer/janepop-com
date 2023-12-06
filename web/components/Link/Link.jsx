@@ -22,6 +22,7 @@ const Link = forwardRef((props, ref) => {
 
   const target = useMemo(() => {
     if (rawTarget) return rawTarget;
+    if (typeof window === 'undefined') return undefined;
     return isUrlExternal(href, window.location.hostname) ? '_blank' : undefined;
   }, [hash, rawTarget]);
 

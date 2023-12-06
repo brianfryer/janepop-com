@@ -19,22 +19,19 @@
 }
 
 .Why__lists {
+  position: relative;
 
-  @screen sm> {
-    position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
 
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
+    pointer-events: none;
 
-      pointer-events: none;
+    background-image: url('/images/pattern.svg');
+    background-size: theme('screens.xl.min');
 
-      background-image: url('/images/pattern.svg');
-      background-size: theme('screens.xl.min');
-
-      opacity: theme('opacity.10');
-    }
+    opacity: theme('opacity.10');
   }
 }
 

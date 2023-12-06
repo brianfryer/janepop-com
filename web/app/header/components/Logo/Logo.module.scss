@@ -1,4 +1,4 @@
-.Logo {
+.Logo__wrapper {
   font-family: theme('fontFamily.heading');
   font-size: theme('spacing.10');
   font-weight: theme('fontWeight.black');
@@ -16,19 +16,16 @@
     outline: theme('spacing.px') solid theme('colors.white');
   }
 
-  // position: relative;
-  // padding-inline-start: theme('spacing.16');
+  display: flex;
+  align-items: stretch;
+  gap: theme('spacing.4');
+}
 
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   inset-block: 0;
-  //   inset-inline-start: 0;
+.Logo__insignia {
+  display: block;
+  height: 1em;
+}
 
-  //   width: theme('spacing.10');
-  //   height: theme('spacing.10');
-
-  //   background-image: url('/images/insignia.svg');
-  //   background-size: contain;
-  // }
+.Logo {
+  // intentionally blank
 }
