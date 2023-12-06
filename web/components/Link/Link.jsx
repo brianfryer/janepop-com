@@ -10,80 +10,66 @@ const Link = forwardRef((props, ref) => {
     children,
     href,
     onClick = noop,
-    onKeyDown = noop,
-    target,
+    target: rawTarget,
     ...rest
   } = props;
 
-  const isNativeLink = useMemo(
-    () => {
-      if (typeof window === 'undefined') return false;
-      if (target === '_blank') return true;
-      if (['mailto:', 'tel:', 'sms:'].some((s) => href.startsWith(s))) return true;
+  const hash = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    const url = new URL(href, window.location.origin);
+    return url.hash;
+  }, [href]);
 
-      return isUrlExternal(href, window.location.hostname);
-    },
-    [href, target],
-  );
+  const target = useMemo(() => {
+    if (rawTarget) return rawTarget;
+    return isUrlExternal(href, window.location.hostname) ? '_blank' : undefined;
+  }, [hash, rawTarget]);
 
-  const hash = useMemo(
-    () => {
-      if (typeof window === 'undefined') return false;
-      const url = new URL(href, window.location.origin);
-      return url.hash;
-    },
-    [href],
-  );
+  const isNativeLink = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    if (target === '_blank') return true;
+    if (['mailto:', 'tel:', 'sms:'].some((s) => href.startsWith(s))) return true;
+  }, [href, target]);
 
-  const handleClick = useCallback(
-    (e) => {
-      onClick(e);
-      onKeyDown(e);
+  const handleClick = useCallback((e) => {
+    onClick(e);
 
-      if (isNativeLink || !hash) return;
+    if (isNativeLink || !hash) return;
 
-      e.preventDefault();
+    // e.preventDefault();
 
-      const id = hash.split('#').pop();
-      const destination = document.getElementById(id);
+    const id = hash.split('#').pop();
+    const destination = document.getElementById(id);
 
-      if (destination) {
-        const { top } = destination.getBoundingClientRect();
-        window.scrollTo(0, window.scrollY + top);
-      }
-    },
-    [
-      hash,
-      isNativeLink,
-      onClick,
-      onKeyDown,
-    ],
-  );
+    if (destination) {
+      const { top } = destination.getBoundingClientRect();
+      window.scrollTo(0, window.scrollY + top);
+    }
+  }, [hash, isNativeLink, onClick]);
+
+  if (isNativeLink) {
+    return (
+      <a
+        href={href}
+        onClick={handleClick}
+        ref={ref}
+        target={target}
+        {...rest}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
-    <>
-      {isNativeLink ? (
-        <a
-          href={href}
-          onClick={handleClick}
-          onKeyDown={handleClick}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </a>
-      ) : (
-        <NextLink
-          href={href}
-          onClick={handleClick}
-          onKeyDown={handleClick}
-          ref={ref}
-          {...rest}
-        >
-          {children}
-        </NextLink>
-      )}
-    </>
+    <NextLink
+      href={href}
+      onClick={handleClick}
+      ref={ref}
+      {...rest}
+    >
+      {children}
+    </NextLink>
   );
 });
 

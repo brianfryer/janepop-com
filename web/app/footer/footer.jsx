@@ -24,7 +24,10 @@ const Footer = (props) => {
   return (
     <footer className={clsx(styles.Footer, className)}>
       <Container className={styles.Footer__container}>
-        <Prose className={styles.Footer__blurb}>
+        <Prose
+          className={styles.Footer__blurb}
+          options={{ forceBlock: true }}
+        >
           {blurb}
         </Prose>
       </Container>

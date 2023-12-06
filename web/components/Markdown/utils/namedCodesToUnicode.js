@@ -12,6 +12,7 @@ const namedCodesToUnicode = {
   rdquo: '\u201D',
   rsquo: '\u2019',
   shy: '\u00AD',
+  squarf: '\u25A0',
 };
 
 export default namedCodesToUnicode;
