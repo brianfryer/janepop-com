@@ -25,6 +25,15 @@ const Why = (props) => {
       ul: 'unOrderedList',
     };
 
+    if (!compiledProse?.props?.children) {
+      return {
+        heading: null,
+        subheading: null,
+        orderedList: null,
+        unOrderedList: null,
+      };
+    }
+
     return compiledProse.props.children.reduce((acc, child) => {
       const type = types[child.type];
 
@@ -62,12 +71,14 @@ const Why = (props) => {
         )}
         {unOrderedList && (
           <div className={styles.Why__unOrderedList__wrapper}>
-            <Heading
-              className={styles.Why__subheading}
-              fontSize={fontSize}
-            >
-              {subheading}
-            </Heading>
+            {subheading && (
+              <Heading
+                className={styles.Why__subheading}
+                fontSize={fontSize}
+              >
+                {subheading}
+              </Heading>
+            )}
             <Container>
               <UnOrderedList className={styles.Why__unOrderedList}>
                 {unOrderedList}

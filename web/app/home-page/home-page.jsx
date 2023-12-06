@@ -39,38 +39,46 @@ const HomePage = (props) => {
     return '2xl';
   }, [breakpoint]);
 
-  const sections = useMemo(() => [{
-    Component: Hero,
-    className: styles.HomePage__hero,
-    data: { hero },
-    key: 'hero',
-  }, {
-    Component: About,
-    className: styles.HomePage__about,
-    data: { about },
-    key: 'about',
-  }, {
-    Component: Why,
-    className: styles.HomePage__why,
-    data: { why },
-    key: 'why',
-    // }, {
+  const sections = useMemo(() => [
+    !hero ? null : {
+      Component: Hero,
+      className: styles.HomePage__hero,
+      data: { hero },
+      key: 'hero',
+    },
+    !about ? null : {
+      Component: About,
+      className: styles.HomePage__about,
+      data: { about },
+      key: 'about',
+    },
+    !why ? null : {
+      Component: Why,
+      className: styles.HomePage__why,
+      data: { why },
+      key: 'why',
+    },
+    // !how ? null : {
     //   Component: How,
     //   className: styles.HomePage__how,
     //   data: { how },
     //   key: 'how',
-    // }, {
+    // },
+    // !contact ? null : {
     //   Component: Contact,
     //   className: styles.HomePage__contact,
     //   data: { contact },
     //   key: 'contact',
-  }], [
+    // },
+  ].filter(Boolean), [
     about,
     // contact,
     hero,
     // how,
     why,
   ]);
+
+  if (sections.length === 0) return null;
 
   return (
     <div className={styles.HomePage}>

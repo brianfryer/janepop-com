@@ -31,6 +31,13 @@ const Hero = (props) => {
   const { blurb, heading } = useMemo(() => {
     const compiledProse = compiler(prose?.blurb);
 
+    if (!compiledProse?.props?.children) {
+      return {
+        blurb: null,
+        heading: null,
+      };
+    }
+
     return compiledProse.props.children.reduce((acc, child) => {
       if (child.type === 'h1') {
         acc.heading.push(child);
@@ -57,7 +64,7 @@ const Hero = (props) => {
 
       acc.blurb.push(childClone);
       return acc;
-    }, { heading: [], blurb: [] });
+    }, { blurb: [], heading: [] });
   }, [prose, renderEm]);
 
   return (

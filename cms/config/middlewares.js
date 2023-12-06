@@ -1,12 +1,12 @@
-const mediaSrc = [
+const mediaSrc = ({ env }) => [
   "'self'",
   'data:',
   'blob:',
   'dl.airtable.com',
-  `${process.env.AWS_BUCKET}.s3.${process.env.AWS_REGION}.amazonaws.com`,
+  env('R2_PUBLIC_URL').replace(/^https?:\/\//, ''),
 ];
 
-module.exports = [
+module.exports = ({ env }) => [
   'strapi::errors',
   {
     name: 'strapi::security',
@@ -15,8 +15,8 @@ module.exports = [
         useDefaults: true,
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': mediaSrc,
-          'media-src': mediaSrc,
+          'img-src': mediaSrc({ env }),
+          'media-src': mediaSrc({ env }),
           upgradeInsecureRequests: null,
         },
       },
