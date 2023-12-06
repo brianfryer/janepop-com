@@ -15,7 +15,12 @@ const Hero = (props) => {
     fontSize,
   } = props;
 
-  const { componentId, links, prose } = data?.hero || {};
+  const {
+    componentId,
+    links,
+    media,
+    prose,
+  } = data?.hero || {};
 
   const renderEm = useCallback((em) => React.cloneElement(em, {
     children: [
@@ -72,7 +77,19 @@ const Hero = (props) => {
       className={clsx(styles.Hero__root, className)}
       id={componentId}
     >
-      <Bg className={styles.Hero__bg} />
+      {media.data?.length > 0 && (() => {
+        const [image] = media.data;
+        const { url } = image?.attributes || {};
+        if (!url) return null;
+        const backgroundImage = `url('${url}')`;
+
+        return (
+          <Bg
+            className={styles.Hero__bg}
+            style={{ backgroundImage }}
+          />
+        );
+      })()}
       <div className={styles.Hero__wrapper}>
         <div className={styles.Hero}>
           <Prose

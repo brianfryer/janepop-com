@@ -9,7 +9,7 @@ import styles from './Why.module.scss';
 
 const Why = (props) => {
   const { className, data, fontSize } = props;
-  const { componentId, prose } = data?.why || {};
+  const { componentId, media, prose } = data?.why || {};
 
   const {
     orderedList,
@@ -64,6 +64,19 @@ const Why = (props) => {
         </Heading>
       )}
       <div className={styles.Why__lists}>
+        {media.data?.length > 0 && (() => {
+          const [image] = media.data;
+          const { url } = image?.attributes || {};
+          if (!url) return null;
+          const backgroundImage = `url('${url}')`;
+
+          return (
+            <span
+              className={styles.Why__lists__bg}
+              style={{ backgroundImage }}
+            />
+          );
+        })()}
         {orderedList && (
           <OrderedList className={styles.Why__orderedList}>
             {orderedList}

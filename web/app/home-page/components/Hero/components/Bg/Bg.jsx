@@ -11,13 +11,16 @@ import breakpoints from '~/config/breakpoints.json';
 import styles from './Bg.module.scss';
 
 const Bg = (props) => {
-  const { className } = props;
+  const { className, style } = props;
+
   const { scrollY } = useScroll();
+
   const opacity = useTransform(
     scrollY,
     [0, breakpoints.sm],
     [1, 0],
   );
+
   const y = useTransform(
     scrollY,
     [0, breakpoints.lg],
@@ -41,7 +44,12 @@ const Bg = (props) => {
     <motion.span
       className={clsx(styles.Bg, className)}
       style={{ opacity, y }}
-    />
+    >
+      <span
+        className={styles.Bg__image}
+        style={style}
+      />
+    </motion.span>
   );
 };
 
