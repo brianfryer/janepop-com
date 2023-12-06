@@ -24,12 +24,13 @@ const Link = forwardRef((props, ref) => {
     if (rawTarget) return rawTarget;
     if (typeof window === 'undefined') return undefined;
     return isUrlExternal(href, window.location.hostname) ? '_blank' : undefined;
-  }, [hash, rawTarget]);
+  }, [href, rawTarget]);
 
   const isNativeLink = useMemo(() => {
     if (typeof window === 'undefined') return false;
     if (target === '_blank') return true;
     if (['mailto:', 'tel:', 'sms:'].some((s) => href.startsWith(s))) return true;
+    return false;
   }, [href, target]);
 
   const handleClick = useCallback((e) => {

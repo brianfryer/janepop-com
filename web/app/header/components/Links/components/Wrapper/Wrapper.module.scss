@@ -6,8 +6,8 @@
   transform: translate3d(0, -50%, 0);
 
   --button-color: theme('colors.sun.950');
-  --button-border-color: theme('colors.sun.200');
-  --button-background-color: theme('colors.sun.200');
+  --button-border-color: theme('colors.white');
+  --button-background-color: theme('colors.white');
   
   &.open {
     --button-color: theme('colors.sun.50');

@@ -7,11 +7,24 @@ const additionalSitemaps = additionalSitemapsPaths.map(
 );
 
 const nextSitemapConfig = {
+  additionalPaths: async (config) => [
+    await config.transform(config, '/'),
+  ],
   exclude: [
+    '/admin',
     ...additionalSitemapsPaths,
   ],
   generateRobotsTxt: true,
-  robotsTxtOptions: { additionalSitemaps },
+  robotsTxtOptions: {
+    additionalSitemaps,
+    policies: [{
+      userAgent: '*',
+      allow: '/',
+    }, {
+      userAgent: '*',
+      disallow: '/admin',
+    }],
+  },
   siteUrl: baseUrl.toString(),
 };
 
